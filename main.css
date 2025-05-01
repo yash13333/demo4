@@ -53,6 +53,7 @@ body {
   box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
   transition: box-shadow 0.3s ease;
   border-radius: 20px;
+  transform: translateZ(500px);
 }
 
 #drag-container img:hover, #drag-container video:hover {
