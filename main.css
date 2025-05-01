@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  touch-action: none;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  background: #111;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  font-family: 'Dancing Script', cursive;
+}
+
+#drag-container, #spin-container {
+  position: relative;
+  text-transform: uppercase;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: rotateX(-10deg);
+  z-index: 100;
+  color: #FF0000;
+  max-width: 90vw;
+  max-height: 90vh;
+ border-radius: 20px;
+}
+
+#spin-container p {
+  color: #FF0000;
+  font-size: 5vw;
+  text-align: center;
+}
+
+#drag-container img, #drag-container video {
+  transform-style: preserve-3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 120%;
+  max-height: 120%;
+  line-height: 200px;
+  font-size: 50px;
+  text-align: center;
+  box-shadow: 0 0 8px #fff;
+  box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+  transition: box-shadow 0.3s ease;
+  border-radius: 20px;
+}
+
+#drag-container img:hover, #drag-container video:hover {
+  box-shadow: 0 0 15px #fffd;
+  box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+}
+
+#drag-container p {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateX(90deg);
+  color: rgb(0, 195, 255);
+  animation: fadein ease 15s;
+  font-size: 4vw;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* 
+#ground {
+  width: 900px;
+  height: 900px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateX(90deg);
+  background: radial-gradient(circle, #9993, transparent);
+} */
+#ground {
+  width: 80vw;
+  height: 80vw;
+  max-width: 900px;
+  max-height: 900px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateX(90deg);
+  background: radial-gradient(circle, #9993, transparent);
+}
+
+
+#music-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+@keyframes spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes spinRevert {
+  from { transform: rotateY(360deg); }
+  to { transform: rotateY(0deg); }
+}
+
+#canvas {
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+#canva {
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  #drag-container, #spin-container {
+      transform: rotateX(-5deg);
+      max-width: 95vw;
+      max-height: 80vh;
+  }
+
+  #drag-container img, #drag-container video {
+      max-width: 100%;
+      max-height: 100%;
+  }
+
+  #spin-container p, #drag-container p {
+      font-size: 6vw;
+  }
+
+  #ground {
+      width: 600px;
+      height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  #drag-container, #spin-container {
+      transform: rotateX(0deg);
+      max-width: 100vw;
+      max-height: 75vh;
+  }
+
+  #spin-container p, #drag-container p {
+      font-size: 8vw;
+  }
+
+  #ground {
+      width: 400px;
+      height: 400px;
+  }
+}
